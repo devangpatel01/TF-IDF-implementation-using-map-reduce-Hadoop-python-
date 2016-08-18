@@ -1,0 +1,8 @@
+hadoop jar $HADOOP/contrib/streaming/hadoop-streaming-1.2.1.jar -input /home/d/dx/dxp2106/project5/*.txt -output /home/d/dx/dxp2106/output1 -mapper /home/d/dx/dxp2106/mapper1.py -reducer /home/d/dx/dxp2106/reducer1.py
+
+
+hadoop jar $HADOOP/contrib/streaming/hadoop-streaming-1.2.1.jar -input /home/d/dx/dxp2106/output1/part-00000 -output /home/d/dx/dxp2106/output2 -mapper /home/d/dx/dxp2106/mapper2.py -reducer /home/d/dx/dxp2106/reducer2.py
+
+hadoop jar $HADOOP/contrib/streaming/hadoop-streaming-1.2.1.jar -input /home/d/dx/dxp2106/output2/part-00000 -output /home/d/dx/dxp2106/output3 -mapper /home/d/dx/dxp2106/mapper3.py -reducer /home/d/dx/dxp2106/reducer3.py
+
+hadoop jar $HADOOP/contrib/streaming/hadoop-streaming-1.2.1.jar -numReduceTasks 0 -input /home/d/dx/dxp2106/output3/part-00000 -output /home/d/dx/dxp2106/output4 -mapper /home/d/dx/dxp2106/mapper4.py
